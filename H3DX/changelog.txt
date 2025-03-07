@@ -1,0 +1,3 @@
+V1.01: 
+Fixed NaN bug when saving some STL files
+Added function to check if three points are collinear

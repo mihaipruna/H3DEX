@@ -1,0 +1,9 @@
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\bin\Release\H3DExtensions.dll
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\bin\Release\H3DExtensions.pdb
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\bin\Release\HelixToolkit.Wpf.dll
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\bin\Release\HelixToolkit.Wpf.pdb
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\bin\Release\HelixToolkit.Wpf.xml
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\obj\Release\H3DExtensions.dll
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\obj\Release\H3DExtensions.pdb
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\bin\Release\H3DExtensions.XML
+C:\Users\Sirona\Documents\projects\CADLIB\H3DExtensions\H3DExtensions\obj\Release\H3DExtensions.csprojResolveAssemblyReference.cache

@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>H3DExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:H3DEx.Constants">
+            <summary>
+            Settings, tolerances, etc
+            </summary>
+        </member>
+        <member name="F:H3DEx.Constants.geometryWeldTolerance">
+            <summary>
+            Welding tolerance
+            </summary>
+        </member>
+        <member name="F:H3DEx.Constants.largeNumber">
+            <summary>
+            This is needed as a reference large number since Double.Maxvalue trips some Helix functions
+            </summary>
+        </member>
+        <member name="F:H3DEx.Constants.angleDegreeTolerance">
+            <summary>
+            Less , and vectors are collinear.
+            </summary>
+        </member>
+        <member name="T:H3DEx.PointOperations">
+            <summary>
+            Functions acting on Point3D or collections of Point3D
+            </summary>
+        </member>
+        <member name="M:H3DEx.PointOperations.PointsCollinear(System.Windows.Media.Media3D.Point3D,System.Windows.Media.Media3D.Point3D,System.Windows.Media.Media3D.Point3D)">
+            <summary>
+            Returns true if 3 points collinear
+            </summary>
+            <param name="pt1">Point3D</param>
+            <param name="pt2">Point3D</param>
+            <param name="pt3">Point3D</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.GetPointCloudBoundingBox(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D})">
+            <summary>
+            Gets bounding box of a list of points in 3d space
+            </summary>
+            <param name="pcloud">list of Point3D</param>
+            <returns>Rect3D</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.GetPtsCentroid(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D})">
+            <summary>
+            gets a point in the middle of a list of 3d points
+            </summary>
+            <param name="listofpoints">list of Point3D</param>
+            <returns>Point3D</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.FirstOrderSmoothContour(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Double)">
+            <summary>
+            Smooths a contour based on distance between points and segments made from previous and next point
+            </summary>
+            <param name="originalPts">List of Point3D</param>
+            <param name="maxDev">maximum distance to keep</param>
+            <returns>smoothed list of Point3D</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.PrunePoints(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Double)">
+            <summary>
+            Removes points too close to other points
+            </summary>
+            <param name="originalPoints">List of Point3D</param>
+            <param name="distanceToler">removal limit distance</param>
+            <returns>pruned list of Point3D</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.GetOutwardContourNormals(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D})">
+            <summary>
+            Returns a list of normal vectors pointing out from a closed loop, for every point in loop
+            </summary>
+            <param name="cpts">List of Point3D</param>
+            <returns>List of Vector3D</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.SetNumberPoints(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Int32)">
+            <summary>
+            Refactors points in a list to match a given number. used to make sure all loft contours have same number of points
+            </summary>
+            <param name="contourPoints">points list</param>
+            <param name="newNumberPoints">numver</param>
+            <returns>new points list</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:H3DEx.PointOperations.GetContourLength(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D})" -->
+        <member name="M:H3DEx.PointOperations.GetPointOnContour(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Double)">
+            <summary>
+             Gets a point on a contour at specific ration to contour length by interpolating
+            </summary>
+            <param name="contourPoints">list of points</param>
+            <param name="lengthRatio">ratio 0-1</param>
+            <returns>Point3D</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.ProjectVectorOnVector(System.Windows.Media.Media3D.Vector3D,System.Windows.Media.Media3D.Vector3D)">
+            <summary>
+            Projects a vector on another
+            </summary>
+            <param name="toProject">Vector3D to project</param>
+            <param name="projOn">Vector3D to project on</param>
+            <returns>projection as Vector3D</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.ProjectPointOnPlane(System.Windows.Media.Media3D.Point3D,HelixToolkit.Wpf.Plane3D)">
+            <summary>
+            projects a point ona  plane
+            </summary>
+            <param name="toProject">Point3D</param>
+            <param name="plane">Plane3D</param>
+            <returns>Point3D or null</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.MakePointMiddle(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Int32,System.Int32@)">
+            <summary>
+            Make point index middle of contour based on indices
+            </summary>
+            <param name="contour">list of Point3D</param>
+            <param name="index">valid integer index</param>
+            <param name="newindex">out new index of same point</param>
+            <returns></returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.PointIsCorner(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Int32)">
+            <summary>
+            True if point is not on a straight segment
+            </summary>
+            <param name="contour">list Point3D</param>
+            <param name="index">valid integer index</param>
+            <returns>booleans</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.ContainsOrigin(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D})">
+            <summary>
+            Checks if a list of points contains origin
+            </summary>
+            <param name="pts">list of Point3D</param>
+            <returns>true of false</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.SetStartPoint(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Windows.Media.Media3D.Point3D)">
+            <summary>
+            Cycles through points list to start near start point
+            </summary>
+            <param name="pts">list of Point3D</param>
+            <param name="nearStart">Point3D</param>
+            <returns>updated list</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.NearestPointIndex(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Windows.Media.Media3D.Point3D)">
+            <summary>
+            Returns the index of the point in list nearest to specified point
+            </summary>
+            <param name="pts">Listof Point3d</param>
+            <param name="findNear">Point3D</param>
+            <returns>integer</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.StatisticClockwisePoints(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},HelixToolkit.Wpf.Plane3D)">
+            <summary>
+             reverses points list order if more than half not clockwise by angle
+            </summary>
+            <param name="originalPoints">List of points, should be roughly in same plane</param>
+            <param name="pointsPlane">Plane holding points</param>
+            <returns>updated list</returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.FastClockwisePoints(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},HelixToolkit.Wpf.Plane3D)">
+            <summary>
+             reverses points list order if any not clockwise as compared by angle. fastest
+            </summary>
+            <param name="originalPoints">List of points, should be roughly in same plane</param>
+            <param name="pointsPlane">Plane holding points</param>
+            <returns>updated list</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:H3DEx.PointOperations.AngleInPlane(System.Windows.Media.Media3D.Vector3D,System.Windows.Media.Media3D.Vector3D,HelixToolkit.Wpf.Plane3D)" -->
+        <member name="M:H3DEx.PointOperations.MakeSplinePoints(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Int32)">
+            <summary>
+            makes nice smooth curve through points
+            </summary>
+            <param name="seedPoints">list of points</param>
+            <param name="numberPoints">number of points on spline</param>
+            <returns></returns>
+        </member>
+        <member name="M:H3DEx.PointOperations.GetContourPointRatio(System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D},System.Int32)">
+            <summary>
+            /Finds ratio of point to length of contour
+            </summary>
+            <param name="contourPoints">list of points</param>
+            <param name="ptIndex">index</param>
+            <returns>ratio (0-1)</returns>
+        </member>
+        <member name="T:H3DEx.MeshOperations">
+            <summary>
+            Mesh generation and contour cutting
+            </summary>
+        </member>
+        <member name="M:H3DEx.MeshOperations.CutMeshContour(System.Windows.Media.Media3D.MeshGeometry3D,HelixToolkit.Wpf.Plane3D)">
+            <summary>
+             returns contour points on plane cut
+            </summary>
+            <param name="myMesh">3D Mesh</param>
+            <param name="myPlane">Plane</param>
+            <returns>contour points</returns>
+        </member>
+        <member name="M:H3DEx.MeshOperations.CutContours(System.Windows.Media.Media3D.ModelVisual3D,HelixToolkit.Wpf.Plane3D)">
+            <summary>
+            Cuts contours over objects which might have multiple children
+            </summary>
+            <param name="myModel">ModelVisual3D</param>
+            <param name="myPlane">Plane3D</param>
+            <returns>list of lists of Point3D</returns>
+        </member>
+        <member name="M:H3DEx.MeshOperations.MakeLoft(System.Collections.Generic.List{System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D}})">
+            <summary>
+            Creates loft geometry from sets of matching points
+            </summary>
+            <param name="contours">list of list of points</param>
+            <returns>mesh geometry</returns>
+        </member>
+        <member name="M:H3DEx.MeshOperations.MakeCappedLoft(System.Collections.Generic.List{System.Collections.Generic.List{System.Windows.Media.Media3D.Point3D}})">
+            <summary>
+            Creates capped loft geometry from sets of matching points
+            </summary>
+            <param name="contours">list of list of points</param>
+            <returns>mesh geometry</returns>
+        </member>
+        <member name="M:H3DEx.MeshOperations.MakeTestBox(System.Windows.Media.Media3D.Rect3D)">
+            <summary>
+            makes a simple  box geometry based on bounds
+            </summary>
+            <param name="bounds">Rect3D</param>
+            <returns>geometry model 3d</returns>
+        </member>
+        <member name="T:H3DEx.IOOperations">
+            <summary>
+            Geometry read from and save to file
+            </summary>
+        </member>
+        <member name="M:H3DEx.IOOperations.ReadCADGeometry(System.String)">
+            <summary>
+            loads a CAD model from file
+            </summary>
+            <param name="CADfile">valid path</param>
+            <returns>3D model</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:H3DEx.IOOperations.ReadCADModelVisual3D(System.String)" -->
+        <member name="M:H3DEx.IOOperations.SaveSTL(System.Windows.Media.Media3D.MeshGeometry3D,System.String)">
+            <summary>
+            Saves geometry mesh as ASCII STL 
+            </summary>
+            <param name="mtd">mesh geometry</param>
+            <param name="filePath">valid file path</param>
+        </member>
+    </members>
+</doc>
